@@ -29,10 +29,8 @@ jobs:
     strategy:
       matrix:
         build_type: [Release, Debug]
-        shared_libs: [NoSharedLibs]
         include:
           - build_type: Release
-            shared_libs: EnableSharedLibs
       fail-fast: false
     runs-on: ubuntu-18.04
     steps:
@@ -59,8 +57,8 @@ jobs:
           cmake ${{ github.workspace }}/llvm-project/llvm \
             -DLLVM_ENABLE_PROJECTS="clang" \
             -DLLVM_EXTERNAL_PROJECTS="llvm-spirv;opencl-clang" \
-            -DLLVM_EXTERNAL_LLVM_SPIRV_SOURCE_DIR=${{ github.workspace }}/SPIRV-LLVM-Translator \
-            -DLLVM_EXTERNAL_OPENCL_CLANG_SOURCE_DIR=${{ github.workspace }}/opencl-clang \
+            -DLLVM_EXTERNAL_LLVM_SPIRV_SOURCE_DIR=${{ github.workspace }}/llvm-project/SPIRV-LLVM-Translator \
+            -DLLVM_EXTERNAL_OPENCL_CLANG_SOURCE_DIR=${{ github.workspace }}/llvm-project/opencl-clang \
             -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
             -DLLVM_TARGETS_TO_BUILD="X86" \
             -G "Unix Makefiles"
