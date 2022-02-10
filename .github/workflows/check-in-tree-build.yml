@@ -54,6 +54,10 @@ jobs:
       - name: Configure
         run: |
           mkdir build && cd build
+          echo | pwd
+          echo | ls ../
+          echo | ls ${{ github.workspace }}
+          echo | ls ${{ github.workspace }}/llvm-project
           cmake ${{ github.workspace }}/llvm-project/llvm \
             -DLLVM_ENABLE_PROJECTS="clang" \
             -DLLVM_EXTERNAL_PROJECTS="llvm-spirv;opencl-clang" \
@@ -65,6 +69,5 @@ jobs:
       - name: Build
         run: |
           cd build
-          echo | pwd
-          echo | ls ../
+          
           make opencl-clang -j2
