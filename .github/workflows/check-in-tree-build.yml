@@ -65,6 +65,6 @@ jobs:
       - name: Build
         run: |
           cd build
-          pwd
-          ls ../
+          echo | pwd
+          echo | ls ../
           make opencl-clang -j2
