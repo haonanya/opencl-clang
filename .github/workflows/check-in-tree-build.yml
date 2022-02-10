@@ -50,14 +50,18 @@ jobs:
       - name:  Checkout the translator sources
         uses: actions/checkout@v2
         with:
+          repository: KhronosGroup/SPIRV-LLVM-Translator
+          ref: llvm_release_90
           path: llvm-project/SPIRV-LLVM-Translator
+      - name:  Checkout opencl-clang sources
+        uses: actions/checkout@v2
+        with:
+          repository: intel/opencl-clang
+          ref: ocl-open-90
+          path: llvm-project/opencl-clang
       - name: Configure
         run: |
           mkdir build && cd build
-          echo | pwd
-          echo | ls ../
-          echo | ls ${{ github.workspace }}
-          echo | ls ${{ github.workspace }}/llvm-project
           cmake ${{ github.workspace }}/llvm-project/llvm \
             -DLLVM_ENABLE_PROJECTS="clang" \
             -DLLVM_EXTERNAL_PROJECTS="llvm-spirv;opencl-clang" \
