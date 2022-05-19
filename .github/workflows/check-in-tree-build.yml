@@ -57,6 +57,7 @@ jobs:
       - name: Configure
         run: |
           mkdir build && cd build
+          echo | git --version
           cmake ${{ github.workspace }}/llvm-project/llvm \
             -DLLVM_ENABLE_PROJECTS="clang" \
             -DLLVM_EXTERNAL_PROJECTS="llvm-spirv;opencl-clang" \
