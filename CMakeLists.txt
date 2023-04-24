@@ -347,7 +347,7 @@ target_link_libraries( ${TARGET_NAME}
                        LLVMX86Info
                        LLVMX86Disassembler
                        LLVMAnalysis
-                       LLVMCodeGen
+                       LLVMX86CodeGen
                        LLVMCore
                        LLVMipo
                        LLVMInstCombine
@@ -377,6 +377,7 @@ install(FILES opencl_clang.h
         DESTINATION include/cclang
         COMPONENT ${TARGET_NAME})
 
+#add_custom_target(deploy DEPENDS install-${TARGET_NAME})
 #
 # Stripped PDB files
 #
